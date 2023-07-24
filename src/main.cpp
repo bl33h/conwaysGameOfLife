@@ -75,3 +75,130 @@ void newBoard() {
         }
     }
 }
+
+void initializeBoard() {
+    for (int i = 0; i < 1000; ++i) {
+        int pattern = rand() % 11;
+        int startX = rand() % (BOARD_WIDTH - 10);
+        int startY = rand() % (BOARD_HEIGHT - 10);
+        startX = std::max(startX, 0);
+        startY = std::max(startY, 0);
+        startX = std::min(startX, static_cast<int>(BOARD_WIDTH) - 1);
+        startY = std::min(startY, static_cast<int>(BOARD_HEIGHT) - 1);
+
+        if (pattern == 0) {
+            // Heavy-weight Spaceship
+            board[startX][startY + 1] = true;
+            board[startX + 1][startY] = true;
+            board[startX + 1][startY + 1] = true;
+            board[startX + 1][startY + 2] = true;
+            board[startX + 2][startY] = true;
+            board[startX + 2][startY + 2] = true;
+            board[startX + 3][startY] = true;
+            board[startX + 3][startY + 1] = true;
+
+        } else if (pattern == 1) {
+            // Block
+            board[startX][startY] = true;
+            board[startX][startY + 1] = true;
+            board[startX + 1][startY] = true;
+            board[startX + 1][startY + 1] = true;
+
+        } else if (pattern == 2) {
+            // Bee-hive
+            board[startX + 1][startY] = true;
+            board[startX + 2][startY] = true;
+            board[startX][startY + 1] = true;
+            board[startX + 3][startY + 1] = true;
+            board[startX + 1][startY + 2] = true;
+            board[startX + 2][startY + 2] = true;
+
+        } else if (pattern == 3) {
+            // Loaf
+            board[startX + 1][startY] = true;
+            board[startX + 2][startY] = true;
+            board[startX][startY + 1] = true;
+            board[startX + 3][startY + 1] = true;
+            board[startX + 1][startY + 2] = true;
+            board[startX + 3][startY + 2] = true;
+            board[startX + 2][startY + 3] = true;
+
+        } else if (pattern == 4) {
+            // Boat
+            board[startX][startY] = true;
+            board[startX + 1][startY] = true;
+            board[startX][startY + 1] = true;
+            board[startX + 2][startY + 1] = true;
+            board[startX + 1][startY + 2] = true;
+
+        } else if (pattern == 5) {
+            // Light-weight Spaceship
+            board[startX][startY + 1] = true;
+            board[startX + 1][startY] = true;
+            board[startX + 2][startY] = true;
+            board[startX + 3][startY] = true;
+            board[startX + 3][startY + 1] = true;
+            board[startX + 3][startY + 2] = true;
+            board[startX + 2][startY + 3] = true;
+            board[startX][startY + 3] = true;
+
+        } else if (pattern == 6) {
+            // Penta-decathlon
+            int offset = 1;
+            for (int i = 0; i < 7; ++i) {
+                board[startX][startY + offset] = true;
+                board[startX + 1][startY + offset] = true;
+                board[startX + 2][startY + offset] = true;
+                offset++;
+            }
+
+        } else if (pattern == 7) {
+            // Toad
+            board[startX + 1][startY] = true;
+            board[startX + 2][startY] = true;
+            board[startX + 3][startY] = true;
+            board[startX][startY + 1] = true;
+            board[startX + 1][startY + 1] = true;
+            board[startX + 2][startY + 1] = true;
+
+        } else if (pattern == 8) {
+            // Beacon
+            board[startX][startY] = true;
+            board[startX + 1][startY] = true;
+            board[startX][startY + 1] = true;
+            board[startX + 3][startY + 2] = true;
+            board[startX + 2][startY + 3] = true;
+            board[startX + 3][startY + 3] = true;
+
+        } else if (pattern == 9) {
+            int offset = 3;
+            for (int i = 0; i < 3; ++i) {
+                board[startX + i][startY + offset] = true;
+                board[startX + i + 4][startY + offset] = true;
+                board[startX + i + 9][startY + offset] = true;
+                board[startX + i][startY + offset + 5] = true;
+                board[startX + i + 4][startY + offset + 5] = true;
+                board[startX + i + 9][startY + offset + 5] = true;
+                offset--;
+            }
+            offset = 3;
+            for (int i = 0; i < 3; ++i) {
+                board[startX + offset][startY + i] = true;
+                board[startX + offset][startY + i + 4] = true;
+                board[startX + offset][startY + i + 9] = true;
+                board[startX + offset + 5][startY + i] = true;
+                board[startX + offset + 5][startY + i + 4] = true;
+                board[startX + offset + 5][startY + i + 9] = true;
+                offset--;
+            }
+        
+        } else if (pattern == 10) {
+            // Glider
+            board[startX + 1][startY] = true;
+            board[startX + 2][startY + 1] = true;
+            board[startX][startY + 2] = true;
+            board[startX + 1][startY + 2] = true;
+            board[startX + 2][startY + 2] = true;
+        }
+    }
+}
