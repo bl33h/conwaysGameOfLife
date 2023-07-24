@@ -6,12 +6,12 @@ FileName: main.cpp
 Creation: 21/07/2023
 Last modification: 24/07/2023
 ------------------------------------------------------------------------------*/
-#include "framebuffer.h"
 #include <SDL2/SDL.h>
-#include "colors.h"
-#include <cstdlib>
-#include "point.h"
 #include <vector>
+#include <cstdlib>
+#include "framebuffer.h"
+#include "point.h"
+#include "colors.h"
 
 constexpr size_t BOARD_WIDTH = 200;
 constexpr size_t BOARD_HEIGHT = 200;
@@ -19,14 +19,13 @@ constexpr size_t BOARD_HEIGHT = 200;
 int frameCount = 0;
 int framesPerColorChange = 20;
 bool useCellColor1 = true;
-
 std::vector<std::vector<bool>> board(BOARD_WIDTH, std::vector<bool>(BOARD_HEIGHT, false));
 Color cellColor(156, 114, 255);
 Color cellColor2(0, 153, 153);
 Color backgroundColor(255, 255, 255);
 
 // Function to count the number of live neighbors for a given cell
-int liveNeighbors(int x, int y) {
+int countLiveNeighbors(int x, int y) {
     int liveNeighbors = 0;
 
     for (int dx = -1; dx <= 1; ++dx) {
@@ -51,7 +50,7 @@ void newBoard() {
     std::vector<std::vector<bool>> newBoard(BOARD_WIDTH, std::vector<bool>(BOARD_HEIGHT, false));
     for (int x = 0; x < BOARD_WIDTH; ++x) {
         for (int y = 0; y < BOARD_HEIGHT; ++y) {
-            int liveNeighbors = liveNeighbors(x, y);
+            int liveNeighbors = countLiveNeighbors(x, y);
 
             // Conway's Game of Life rules
             if (board[x][y]) {
@@ -210,6 +209,7 @@ void render(SDL_Renderer* renderer) {
         frameCount = 0;
         useCellColor1 = !useCellColor1;
     }
+
     for (int x = 0; x < BOARD_WIDTH; ++x) {
         for (int y = 0; y < BOARD_HEIGHT; ++y) {
             if (board[x][y]) {
@@ -222,6 +222,7 @@ void render(SDL_Renderer* renderer) {
         }
     }
 
+    // Next generation
     newBoard();
     SDL_RenderPresent(renderer);
 }
