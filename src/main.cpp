@@ -5,6 +5,7 @@ FileName: main.cpp
 @version: I
 Creation: 21/07/2023
 Last modification: 24/07/2023
+*Some parts were made using the AIs Bard and ChatGPT
 ------------------------------------------------------------------------------*/
 #include <SDL2/SDL.h>
 #include <vector>
