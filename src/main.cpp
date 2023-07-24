@@ -13,7 +13,6 @@ Last modification: 24/07/2023
 #include "point.h"
 #include <vector>
 
-
 constexpr size_t BOARD_WIDTH = 200;
 constexpr size_t BOARD_HEIGHT = 200;
 
@@ -211,7 +210,6 @@ void render(SDL_Renderer* renderer) {
         frameCount = 0;
         useCellColor1 = !useCellColor1;
     }
-
     for (int x = 0; x < BOARD_WIDTH; ++x) {
         for (int y = 0; y < BOARD_HEIGHT; ++y) {
             if (board[x][y]) {
