@@ -3,9 +3,7 @@ A
 
 <p align="center">
   <br>
-  <video controls width="500">
-    <source src="https://i.imgur.com/XYI9yqX.mp4" type="video/mp4">
-  </video>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWlmYW54aHViNXB0ajVlc3N6cGtrdW1yYXc0ODAyMnd0NXg5YXAyeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VFxDVW36CMiM3G1ctB/giphy.gif" alt="pic" width="500">
   <br>
 </p>
 
