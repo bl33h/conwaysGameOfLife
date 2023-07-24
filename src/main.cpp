@@ -46,3 +46,32 @@ int liveNeighbors(int x, int y) {
     }
     return liveNeighbors;
 }
+
+// Update the board for the next generation
+void newBoard() {
+    std::vector<std::vector<bool>> newBoard(BOARD_WIDTH, std::vector<bool>(BOARD_HEIGHT, false));
+    for (int x = 0; x < BOARD_WIDTH; ++x) {
+        for (int y = 0; y < BOARD_HEIGHT; ++y) {
+            int liveNeighbors = liveNeighbors(x, y);
+
+            // Conway's Game of Life rules
+            if (board[x][y]) {
+                if (liveNeighbors < 2 || liveNeighbors > 3)
+                    newBoard[x][y] = false;
+                else
+                    newBoard[x][y] = true;
+            } else {
+                if (liveNeighbors == 3)
+                    newBoard[x][y] = true;
+                else
+                    newBoard[x][y] = false;
+            }
+        }
+    }
+
+    for (int x = 0; x < BOARD_WIDTH; ++x) {
+        for (int y = 0; y < BOARD_HEIGHT; ++y) {
+            board[x][y] = newBoard[x][y];
+        }
+    }
+}
