@@ -26,7 +26,7 @@ The simulation is initialized with a random pattern of cells, and then it update
 - build.sh: A shell script to build the project using CMake.
 - run.sh: A shell script to execute the compiled graphics application.
 - clean.sh: A shell script to clean up build artifacts and generated files.
-- : A directory containing the source code files for the graphics application.
+- src: A directory containing the source code files for the graphics application.
   - colors.h: Header file that defines the Color struct and functions for manipulating colors in the application.
   - framebuffer.h: Header file containing the framebuffer and functions for drawing and filling polygons.
   - point.h: Header file defining the Vertex struct, representing a vertex in a polygon.
