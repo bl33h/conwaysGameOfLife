@@ -24,7 +24,7 @@ Color cellColor(156, 114, 255);
 Color cellColor2(0, 153, 153);
 Color backgroundColor(255, 255, 255);
 
-// Function to count the number of live neighbors for a given cell
+// Live neighbors for a given cell count function
 int countLiveNeighbors(int x, int y) {
     int liveNeighbors = 0;
 
