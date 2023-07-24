@@ -202,3 +202,28 @@ void initializeBoard() {
         }
     }
 }
+
+void render(SDL_Renderer* renderer) {
+    SDL_SetRenderDrawColor(renderer, backgroundColor.r, backgroundColor.g, backgroundColor.b, 255);
+    SDL_RenderClear(renderer);
+    frameCount++;
+    if (frameCount >= framesPerColorChange) {
+        frameCount = 0;
+        useCellColor1 = !useCellColor1;
+    }
+
+    for (int x = 0; x < BOARD_WIDTH; ++x) {
+        for (int y = 0; y < BOARD_HEIGHT; ++y) {
+            if (board[x][y]) {
+                Color aliveColor = useCellColor1 ? cellColor : cellColor2;
+                SDL_SetRenderDrawColor(renderer, aliveColor.r, aliveColor.g, aliveColor.b, 255);
+                SDL_Rect rect{x * (SCREEN_WIDTH / BOARD_WIDTH), y * (SCREEN_HEIGHT / BOARD_HEIGHT),
+                              SCREEN_WIDTH / BOARD_WIDTH, SCREEN_HEIGHT / BOARD_HEIGHT};
+                SDL_RenderFillRect(renderer, &rect);
+            }
+        }
+    }
+
+    newBoard();
+    SDL_RenderPresent(renderer);
+}
