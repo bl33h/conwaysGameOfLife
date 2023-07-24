@@ -50,6 +50,9 @@ To clone and run this application, you'll need [wsl](https://learn.microsoft.com
 # Clone this repository
 $ git clone https://github.com/bl33h/conwaysGameOfLife
 
+# Open the project
+$ cd conwaysGameOfLife
+
 # Give execution permissions
 $ chmod +x configure.sh
 $ chmod +x build.sh
